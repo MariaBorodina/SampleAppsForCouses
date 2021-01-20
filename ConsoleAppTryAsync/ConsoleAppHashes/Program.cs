@@ -61,13 +61,13 @@ namespace ConsoleAppHashes
                     Name="Model1",
                     Width=50,
                     Height=100,
-                    Bitmap = new System.Drawing.Bitmap(@"C:\Users\Crocodile\Pictures\2020-06-25 21-31-42.jpg")
+                    Bitmap = new System.Drawing.Bitmap(@"\Pictures\Strawberry-blue.jpg")
                 },
                 new PictureModel(){
                     Name="Model2",
                     Width=200,
                     Height=50,
-                    Bitmap = new System.Drawing.Bitmap(@"C:\Users\Crocodile\Pictures\harry1.jpg")
+                    Bitmap = new System.Drawing.Bitmap(@"\Pictures\maxresdefault.jpg")
                 },
             };
 
@@ -80,7 +80,7 @@ namespace ConsoleAppHashes
                 Name = "Model2",
                 Width = 200,
                 Height = 100,
-                Bitmap = new System.Drawing.Bitmap(@"C:\Users\Crocodile\Pictures\stars.png")
+                Bitmap = new System.Drawing.Bitmap(@"\Pictures\510174.jpg")
             };
 
             Console.WriteLine("contains: {0}", pictures.Contains(newModel));
