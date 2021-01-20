@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfAppTryAsync.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppTryAsync"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="GeneralText" Grid.Row="0" FontSize="16" Margin="2" 
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   TextWrapping="Wrap"
+                   Text="test" />
+
+        <StackPanel Grid.Row="1" Margin="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="ButtonOlja" Content="hmmm" Width="150"
+                     />
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Margin="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="ButtonManyAsyncAwait" Content="ManyAsync Await" Width="150"
+                    Click="ButtonManyAsyncAwait_Click"/>
+            <Button x:Name="ButtonManyAsyncWhenAll" Content="ManyAsync WhenAll" Width="150"
+                    Click="ButtonManyAsyncWhenAll_Click"/>
+            <Button x:Name="ButtonManyAsyncWaitAll" Content="ManyAsync WaitAll" Width="150"
+                    Click="ButtonManyAsyncWaitAll_Click"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Margin="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="ButtonDoAsyncAsTask" Content="DoAsync as task" Width="150"
+                    Click="ButtonDoAsyncAsTask_Click"/>
+            <Button x:Name="ButtonDoAsyncAwait" Content="DoAsync await" Width="150"
+                    Click="ButtonDoAsyncAwait_Click"/>
+            <Button x:Name="ButtonDoAsyncWait" Content="DoAsync Wait" Width="150"
+                    Click="ButtonDoAsyncWait_Click"/>
+            <Button x:Name="ButtonDoTaskResult" Content="DoTask Result" Width="150"
+                    Click="ButtonDoTaskResult_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Margin="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="ButtonPrint" Content="Print"
+                    Click="ButtonPrint_Click"/>
+            <Button x:Name="ButtonCancel" Content="Cancel" 
+                    Click="ButtonCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
