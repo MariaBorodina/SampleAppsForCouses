@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PictureModel.cs" />
+    <Compile Include="LinkedLists\ListBase.cs" />
+    <Compile Include="LinkedLists\Node.cs" />
+    <Compile Include="Various\PictureModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sortings\BubbleSorting.cs" />
@@ -52,9 +54,10 @@
     <Compile Include="Sortings\InsertionSorting.cs" />
     <Compile Include="Sortings\QuickSorting.cs" />
     <Compile Include="Sortings\ShakerSorting.cs" />
-    <Compile Include="TestAnything.cs" />
+    <Compile Include="Various\TestAnything.cs" />
     <Compile Include="Sortings\SortingBase.cs" />
-    <Compile Include="TestFromSite.cs" />
+    <Compile Include="Various\TestFromSite.cs" />
+    <Compile Include="Various\TestRectangles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -15,14 +15,33 @@ namespace ConsoleAppHashes
             //TestEquals();
             //TestSorts();
 
-            var c = new TestFromSite();
-            Func<string> func = TestFromSite.main;
-            var a = func();
+            //var c = new TestFromSite();
+            //Func<string> func = TestFromSite.main;
+            //var a = func();
 
+            //var c = new Rect(5, 1, 10, 2);
+            //Func<Point, bool> func = c.TestPointWithinRectangle;
+            //var a = func(new Point() { x = 5, y = 1 });
+            var c = new TestAnything();
             Console.WriteLine(c.GetType());
-            Console.WriteLine(func.Method.Name + ": " + a);
+
+            //RunTest(c.TestRemoveDuplicateChars_Array, "abaccaaaaccb");
+            //RunTest(c.TestRemoveDuplicateChars_StringBuilder, "abccda");
+            //Func<string, string> func = c.TestRemoveDuplicateChars_StringBuilder;
+            //var a = func("abcabc");
+            //Console.WriteLine(func.Method.Name + ": " + a);
+
+            Func<string, int> func = c.TestWordCalculator;
+            var a = func("Zebra"); 
+
+            Console.WriteLine($"{func.Method.Name}: {a}");
 
             Console.ReadKey();
+        }
+
+        static void RunTest(Func<string, string> func, string arg)
+        {
+            Console.WriteLine(func.Method.Name + ": " + func(arg));
         }
 
         static void TestSorts()
@@ -54,7 +73,7 @@ namespace ConsoleAppHashes
             Console.WriteLine(func.Method.Name + ": " + a);
         }
 
-
+        /*
         private static HashSet<PictureModel> pictures = new HashSet<PictureModel>()
             {
                 new PictureModel(){
@@ -90,5 +109,6 @@ namespace ConsoleAppHashes
             Console.WriteLine("pictures: {0}\n\n", pictures.Aggregate("", (str, pictureModel) => str + ", " + pictureModel.Name));
 
         }
+        */
     }
 }
