@@ -6,13 +6,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
-    static ConsoleLogger logger = new ConsoleLogger();
+    static EventLogger logger = new ConsoleLogger();
 
     public static void main(String[] args)
     {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
-        EventLogger localLogger = (EventLogger)ctx.getBean("eventLogger");
+        EventLogger localLogger = ctx.getBean(EventLogger.class);
         localLogger.log("test spring message");
 
 
@@ -22,6 +22,11 @@ public class App {
         CoffeeKind kindaBean = (CoffeeKind) ctx.getBean("coffeeKind");
         logger.log(kindaBean.getName() + ": id = " + kindaBean.getId());
 
+    }
+
+    public App(CoffeeKind coffeeKind, EventLogger eventLogger)
+    {
+        logger = eventLogger;
     }
 
 
