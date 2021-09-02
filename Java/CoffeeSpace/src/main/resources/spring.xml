@@ -10,6 +10,13 @@
     </bean>
     <bean id="eventLogger" class="com.mb.CoffeeSpace.ConsoleLogger"/>
 
+    <bean id="event" class="com.mb.CoffeeSpace.Models.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+            <bean id="dateFormat" class="java.util.DateFormat" factory-method="getDateTimeInstance"/>
+        </constructor-arg>
+    </bean>
+
     <bean id="app" class="com.mb.CoffeeSpace.App">
         <constructor-arg ref="eventLogger" />
         <constructor-arg ref="coffeeKind" />

@@ -1,7 +1,8 @@
 package com.mb.CoffeeSpace.Intefaces;
 
-public interface EventLogger {
-    public default void log(String message) {
+import com.mb.CoffeeSpace.Models.Event;
 
-    }
+public interface EventLogger {
+    void log(String message);
+    void logEvent(Event event);
 }
