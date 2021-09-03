@@ -23,9 +23,10 @@ public class Event {
         this.dateFormat = dateFormat;
     }
 
-    public void setMessage(String message)
+    public Event setMessage(String message)
     {
         this.message = message;
+        return this;
     }
 
     @Override

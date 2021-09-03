@@ -1,4 +1,4 @@
-package com.mb.CoffeeSpace;
+package com.mb.CoffeeSpace.Models;
 
 public class CoffeeKind {
     private static int currentIdentity = 0;
