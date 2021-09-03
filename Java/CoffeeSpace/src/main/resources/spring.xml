@@ -13,6 +13,11 @@
     <bean id="fileLogger" class="com.mb.CoffeeSpace.Services.FileLogger" init-method="init">
         <constructor-arg value="log.txt" />
     </bean>
+    <bean id="cacheFileLogger" class="com.mb.CoffeeSpace.Services.CacheFileLogger" init-method="init">
+        <constructor-arg value="log.txt" />
+        <constructor-arg value="5" />
+    </bean>
+
 
     <bean id="event" class="com.mb.CoffeeSpace.Models.Event" scope="prototype">
         <constructor-arg>
@@ -24,7 +29,7 @@
     </bean>
 
     <bean id="app" class="com.mb.CoffeeSpace.App">
-        <constructor-arg ref="fileLogger" />
+        <constructor-arg ref="cacheFileLogger" />
         <constructor-arg ref="coffeeKind" />
     </bean>
 </beans>

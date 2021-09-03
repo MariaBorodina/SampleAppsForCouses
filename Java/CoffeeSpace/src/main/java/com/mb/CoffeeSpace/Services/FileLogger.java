@@ -21,6 +21,8 @@ public class FileLogger implements EventLogger {
         {
             throw new IOException(String.format("Cannot write into file %s.", filename));
         }
+
+        log(this.getClass().getName() + ": greetings!");
     }
 
 
