@@ -10,7 +10,7 @@
     </bean>
 
     <bean id="eventLogger" class="com.mb.CoffeeSpace.Services.ConsoleLogger"/>
-    <bean id="fileLogger" class="com.mb.CoffeeSpace.Services.FileLogger">
+    <bean id="fileLogger" class="com.mb.CoffeeSpace.Services.FileLogger" init-method="init">
         <constructor-arg value="log.txt" />
     </bean>
 
