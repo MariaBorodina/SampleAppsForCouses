@@ -2,13 +2,14 @@ package com.mb.CoffeeSpace.Services;
 
 import com.mb.CoffeeSpace.Enums.EventType;
 import com.mb.CoffeeSpace.Intefaces.EventLogger;
+import com.mb.CoffeeSpace.Intefaces.TypedEventLogger;
 import com.mb.CoffeeSpace.Models.Event;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.*;
 
-public class CombinedLogger implements EventLogger {
+public class CombinedLogger implements TypedEventLogger {
     private Collection<EventLogger> loggers;
    // private Map<String, EventLogger> loggersMap;
 
