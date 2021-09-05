@@ -7,6 +7,7 @@ import com.mb.CoffeeSpace.Models.Event;
 import com.mb.CoffeeSpace.Services.CacheFileLogger;
 import com.mb.CoffeeSpace.Services.ConsoleLogger;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.awt.*;
@@ -28,13 +29,7 @@ public class App {
             System.out.println("Woops! IOException.");
         }
 
-        if(logger instanceof CacheFileLogger) {
-            try {
-                ((CacheFileLogger) logger).flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        ((ConfigurableApplicationContext)ctx).close();
     }
 
     public App(CoffeeKind coffeeKind, EventLogger eventLogger) throws IOException {

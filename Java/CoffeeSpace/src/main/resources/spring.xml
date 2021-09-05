@@ -13,7 +13,9 @@
     <bean id="fileLogger" class="com.mb.CoffeeSpace.Services.FileLogger" init-method="init">
         <constructor-arg value="log.txt" />
     </bean>
-    <bean id="cacheFileLogger" class="com.mb.CoffeeSpace.Services.CacheFileLogger" init-method="init">
+    <bean id="cacheFileLogger" class="com.mb.CoffeeSpace.Services.CacheFileLogger"
+          init-method="init"
+          destroy-method="flush">
         <constructor-arg value="log.txt" />
         <constructor-arg value="5" />
     </bean>
