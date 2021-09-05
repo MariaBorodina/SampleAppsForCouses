@@ -17,6 +17,11 @@ public class FileLogger implements EventLogger {
 
     public void init() throws IOException {
         var file = new File(filename);
+        if(!file.exists())
+        {
+            file.createNewFile();
+        }
+
         if(! file.canWrite())
         {
             throw new IOException(String.format("Cannot write into file %s.", filename));

@@ -5,21 +5,12 @@
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <import resource="loggers.xml" />
+
     <bean id="coffeeKind" class="com.mb.CoffeeSpace.Models.CoffeeKind">
         <constructor-arg name="name" value="Columbia Inza" />
+        <property name="description" value="Nice Central American breed" />
     </bean>
-
-    <bean id="eventLogger" class="com.mb.CoffeeSpace.Services.ConsoleLogger"/>
-    <bean id="fileLogger" class="com.mb.CoffeeSpace.Services.FileLogger" init-method="init">
-        <constructor-arg value="log.txt" />
-    </bean>
-    <bean id="cacheFileLogger" class="com.mb.CoffeeSpace.Services.CacheFileLogger"
-          init-method="init"
-          destroy-method="flush">
-        <constructor-arg value="log.txt" />
-        <constructor-arg value="5" />
-    </bean>
-
 
     <bean id="event" class="com.mb.CoffeeSpace.Models.Event" scope="prototype">
         <constructor-arg>

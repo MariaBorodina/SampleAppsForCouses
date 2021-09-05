@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+    <bean id="eventLogger" class="com.mb.CoffeeSpace.Services.ConsoleLogger"/>
+    <bean id="fileLogger" class="com.mb.CoffeeSpace.Services.FileLogger"
+          init-method="init"
+          lazy-init="true">
+        <constructor-arg value="log1.txt" />
+    </bean>
+    <bean id="cacheFileLogger" class="com.mb.CoffeeSpace.Services.CacheFileLogger"
+          parent="fileLogger"
+          init-method="init"
+          destroy-method="flush">
+        <constructor-arg value="5" />
+    </bean>
+
+
+</beans>

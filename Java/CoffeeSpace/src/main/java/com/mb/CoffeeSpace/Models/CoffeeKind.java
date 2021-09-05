@@ -6,7 +6,18 @@ public class CoffeeKind {
     private String name;
     private int id;
 
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
     public String getName() { return name; }
+
+
 
     public int getId() {
         return id;
