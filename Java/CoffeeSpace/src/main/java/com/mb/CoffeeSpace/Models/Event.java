@@ -1,5 +1,7 @@
 package com.mb.CoffeeSpace.Models;
 
+import com.mb.CoffeeSpace.Enums.EventType;
+
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -11,16 +13,23 @@ public class Event {
     private DateFormat dateFormat;
     private String message;
 
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    private EventType eventType;
+
     public Event()
     {
         id = ++identity;
     }
 
-    public Event(Date date, DateFormat dateFormat)
+    public Event(EventType eventType, Date date, DateFormat dateFormat)
     {
         this();
         this.date = date;
         this.dateFormat = dateFormat;
+        this.eventType = eventType;
     }
 
     public Event setMessage(String message)

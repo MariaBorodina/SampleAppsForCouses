@@ -22,7 +22,7 @@
     </bean>
 
     <bean id="app" class="com.mb.CoffeeSpace.App">
-        <constructor-arg ref="cacheFileLogger" />
+        <constructor-arg ref="comboLogger" />
         <constructor-arg ref="coffeeKind" />
     </bean>
 </beans>
