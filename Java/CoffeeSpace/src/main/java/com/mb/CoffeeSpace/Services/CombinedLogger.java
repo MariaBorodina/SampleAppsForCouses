@@ -10,11 +10,12 @@ import java.text.DateFormat;
 import java.util.*;
 
 public class CombinedLogger implements TypedEventLogger {
-    private Collection<EventLogger> loggers;
-   // private Map<String, EventLogger> loggersMap;
+    //private Collection<EventLogger> loggers;
+    private Map<EventType, EventLogger> loggersMap;
 
-    public CombinedLogger(Collection<EventLogger> loggers) throws IOException {
-        this.loggers = loggers;
+    public CombinedLogger(Map<EventType, EventLogger> loggersMap) throws IOException {
+        //this.loggers = loggers;
+        this.loggersMap = loggersMap;
 
 /*        var cacheLogger = new CacheFileLogger("log3.txt", 5);
         cacheLogger.init();
@@ -33,44 +34,50 @@ public class CombinedLogger implements TypedEventLogger {
     public void logEvent(Event event) throws IOException {
         var eventType = event.getEventType();
         if(eventType == null) {
-            //loggersMap.get("Console").logEvent(event);
             logWithConsoleLogger(event);
         }
         else if(eventType == EventType.INFO) {
-            //loggersMap.get("CacheToFile").logEvent(event);
-            logWithCacheFileLogger(event);
+            //logWithCacheFileLogger(event);
+            loggersMap.get(eventType).logEvent(event);
         }
         else if(eventType == EventType.ERROR)
         {
-/*                loggersMap.values().forEach(logger -> {
+                loggersMap.values().forEach(logger -> {
                     try {
                         logger.logEvent(event);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                });*/
-            loggers.forEach(logger -> {
+                });
+  /*          loggers.forEach(logger -> {
                 try {
                     logger.logEvent(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            });
+            });*/
         }
     }
 
     private void logWithConsoleLogger(Event e) throws IOException {
-        if(loggers == null || !loggers.iterator().hasNext())
+/*        if(loggers == null || !loggers.iterator().hasNext())
             return;
 
         for(EventLogger logger : loggers)
         {
             if(logger instanceof ConsoleLogger)
                 logger.logEvent(e);
+        }*/
+
+        for(EventLogger logger : loggersMap.values())
+        {
+            if(logger instanceof ConsoleLogger)
+                logger.logEvent(e);
         }
+
     }
 
-    private void logWithCacheFileLogger(Event e) throws IOException {
+/*    private void logWithCacheFileLogger(Event e) throws IOException {
         if(loggers == null || !loggers.iterator().hasNext())
             return;
 
@@ -79,5 +86,5 @@ public class CombinedLogger implements TypedEventLogger {
             if(logger instanceof CacheFileLogger)
                 logger.logEvent(e);
         }
-    }
+    }*/
 }

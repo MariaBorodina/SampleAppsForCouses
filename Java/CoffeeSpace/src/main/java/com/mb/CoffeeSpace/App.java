@@ -31,9 +31,6 @@ public class App {
         } catch (IOException ioe) {
             System.out.println("Woops! IOException.");
             logger.error("Woops! IOException.");
-
-//            logger.logEvent(ctx.getBean(Event.class, EventType.ERROR, new Date(), DateFormat.getDateTimeInstance())
-//                    .setMessage("Woops! IOException."));
         }
 
         ((ConfigurableApplicationContext)ctx).close();
@@ -49,8 +46,6 @@ public class App {
     void action() throws IOException {
 
         CoffeeKind kinda1 = new CoffeeKind("First");
-//        var event = ctx.getBean(Event.class, EventType.INFO, new Date(), DateFormat.getDateTimeInstance());
-//        logger.logEvent(event.setMessage( kinda1.getName() + ": id = " + kinda1.getId()));
 
         logger.info(kinda1.getName() + ": id = " + kinda1.getId());
 

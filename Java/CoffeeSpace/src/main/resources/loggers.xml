@@ -21,10 +21,10 @@
 
     <bean id="comboLogger" class="com.mb.CoffeeSpace.Services.CombinedLogger">
         <constructor-arg>
-            <list>
-                <ref bean="eventLogger" />
-                <ref bean="cacheFileLogger" />
-            </list>
+            <map>
+                <entry key="INFO" value-ref="cacheFileLogger" />
+                <entry key="ERROR" value-ref="eventLogger" />
+            </map>
         </constructor-arg>
     </bean>
 
