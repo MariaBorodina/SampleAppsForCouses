@@ -9,18 +9,17 @@ import java.text.DateFormat;
 import java.util.*;
 
 public class CombinedLogger implements EventLogger {
-    //private Collection<EventLogger> loggers;
-    private Map<String, EventLogger> loggersMap;
+    private Collection<EventLogger> loggers;
+   // private Map<String, EventLogger> loggersMap;
 
-    public CombinedLogger() throws IOException {
-//        loggers = Arrays.asList(
-//            new ConsoleLogger(), new CacheFileLogger("log2.txt", 1));
+    public CombinedLogger(Collection<EventLogger> loggers) throws IOException {
+        this.loggers = loggers;
 
-        var cacheLogger = new CacheFileLogger("log3.txt", 5);
+/*        var cacheLogger = new CacheFileLogger("log3.txt", 5);
         cacheLogger.init();
 
         loggersMap = Map.of("Console", new ConsoleLogger(),
-                "CacheToFile", cacheLogger);
+                "CacheToFile", cacheLogger);*/
 
     }
 
@@ -33,20 +32,51 @@ public class CombinedLogger implements EventLogger {
     public void logEvent(Event event) throws IOException {
         var eventType = event.getEventType();
         if(eventType == null) {
-            loggersMap.get("Console").logEvent(event);
+            //loggersMap.get("Console").logEvent(event);
+            logWithConsoleLogger(event);
         }
         else if(eventType == EventType.INFO) {
-            loggersMap.get("CacheToFile").logEvent(event);
+            //loggersMap.get("CacheToFile").logEvent(event);
+            logWithCacheFileLogger(event);
         }
         else if(eventType == EventType.ERROR)
         {
-                loggersMap.values().forEach(logger -> {
+/*                loggersMap.values().forEach(logger -> {
                     try {
                         logger.logEvent(event);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                });
+                });*/
+            loggers.forEach(logger -> {
+                try {
+                    logger.logEvent(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+    }
+
+    private void logWithConsoleLogger(Event e) throws IOException {
+        if(loggers == null || !loggers.iterator().hasNext())
+            return;
+
+        for(EventLogger logger : loggers)
+        {
+            if(logger instanceof ConsoleLogger)
+                logger.logEvent(e);
+        }
+    }
+
+    private void logWithCacheFileLogger(Event e) throws IOException {
+        if(loggers == null || !loggers.iterator().hasNext())
+            return;
+
+        for(EventLogger logger : loggers)
+        {
+            if(logger instanceof CacheFileLogger)
+                logger.logEvent(e);
         }
     }
 }

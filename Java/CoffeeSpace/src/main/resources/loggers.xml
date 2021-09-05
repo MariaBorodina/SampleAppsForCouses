@@ -19,9 +19,13 @@
         <constructor-arg value="5" />
     </bean>
 
-    <bean id="comboLogger" class="com.mb.CoffeeSpace.Services.CombinedLogger"
-        depends-on="eventLogger, cacheFileLogger">
-
+    <bean id="comboLogger" class="com.mb.CoffeeSpace.Services.CombinedLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="eventLogger" />
+                <ref bean="cacheFileLogger" />
+            </list>
+        </constructor-arg>
     </bean>
 
 </beans>
