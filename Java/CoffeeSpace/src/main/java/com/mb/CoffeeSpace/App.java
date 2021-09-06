@@ -18,10 +18,10 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class App {
-    //static EventLogger logger = new ConsoleLogger();
     static TypedEventLogger logger;
     private static ApplicationContext ctx;
 
+    ///
     public static void main(String[] args) throws IOException {
         ctx = new ClassPathXmlApplicationContext("spring.xml");
         var app = ctx.getBean(App.class);
@@ -36,6 +36,8 @@ public class App {
         ((ConfigurableApplicationContext)ctx).close();
     }
 
+
+    ///
     public App(CoffeeKind coffeeKind, EventLogger eventLogger) throws IOException {
         logger = (TypedEventLogger) eventLogger;
 
@@ -43,6 +45,7 @@ public class App {
         logger.log(coffeeKind.getName() + ": id = " + coffeeKind.getId());
     }
 
+    ///
     void action() throws IOException {
 
         CoffeeKind kinda1 = new CoffeeKind("First");

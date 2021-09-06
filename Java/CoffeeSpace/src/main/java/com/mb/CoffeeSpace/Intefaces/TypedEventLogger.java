@@ -10,10 +10,12 @@ import java.util.Date;
 
 public interface TypedEventLogger extends EventLogger {
     default void info(String message) throws IOException {
-        logEvent(new Event(EventType.INFO, new Date(), DateFormat.getDateTimeInstance()).setMessage(message));
+        log(EventType.INFO, message);
     }
 
     default void error(String message) throws IOException {
-        logEvent(new Event(EventType.ERROR, new Date(), DateFormat.getDateTimeInstance()).setMessage(message));
+        log(EventType.ERROR, message);
     }
+
+     void log(EventType eventType, String message) throws IOException;
 }

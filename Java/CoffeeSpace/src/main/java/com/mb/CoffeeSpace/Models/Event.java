@@ -12,12 +12,9 @@ public class Event {
     private Date date;
     private DateFormat dateFormat;
     private String message;
-
-    public EventType getEventType() {
-        return eventType;
-    }
-
     private EventType eventType;
+
+
 
     public Event()
     {
@@ -30,6 +27,15 @@ public class Event {
         this.date = date;
         this.dateFormat = dateFormat;
         this.eventType = eventType;
+    }
+
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    public Event setEventType(EventType eventType) {
+        this.eventType = eventType;
+        return this;
     }
 
     public Event setMessage(String message)
