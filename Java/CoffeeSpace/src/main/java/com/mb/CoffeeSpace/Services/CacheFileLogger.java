@@ -1,9 +1,13 @@
 package com.mb.CoffeeSpace.Services;
 
+import org.springframework.stereotype.Component;
+import javax.annotation.PreDestroy;
+
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+@Component
 public class CacheFileLogger extends FileLogger {
     private int maxCacheSize;
 
@@ -28,6 +32,7 @@ public class CacheFileLogger extends FileLogger {
 
     }
 
+    @PreDestroy
     public void flush() throws IOException {
         var builder = new StringBuilder(maxCacheSize);
 

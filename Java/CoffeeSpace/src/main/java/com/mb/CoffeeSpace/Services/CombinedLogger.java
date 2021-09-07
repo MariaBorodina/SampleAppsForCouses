@@ -6,17 +6,22 @@ import com.mb.CoffeeSpace.Intefaces.TypedEventLogger;
 import com.mb.CoffeeSpace.Models.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.*;
 
+@Component
+@Lazy
 public class CombinedLogger implements TypedEventLogger {
     @Autowired
     ApplicationContext context;
 
     //private Collection<EventLogger> loggers;
     private Map<EventType, EventLogger> loggersMap;
+
 
     public CombinedLogger(Map<EventType, EventLogger> loggersMap) {
         //this.loggers = loggers;

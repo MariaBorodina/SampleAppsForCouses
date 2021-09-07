@@ -2,12 +2,18 @@ package com.mb.CoffeeSpace.Services;
 
 import com.mb.CoffeeSpace.Intefaces.EventLogger;
 import com.mb.CoffeeSpace.Models.Event;
+import javafx.beans.NamedArg;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@Component
+@Lazy
 public class FileLogger implements EventLogger {
     private String filename;
 
@@ -15,6 +21,7 @@ public class FileLogger implements EventLogger {
         this.filename = filename;
     }
 
+    @PostConstruct
     public void init() throws IOException {
         var file = new File(filename);
         if(!file.exists())
