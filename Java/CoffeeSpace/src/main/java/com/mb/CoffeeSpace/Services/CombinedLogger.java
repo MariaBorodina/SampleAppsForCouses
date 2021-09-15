@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.*;
 
-public class CombinedLogger implements TypedEventLogger {
+public class CombinedLogger extends TypedEventLogger {
     @Autowired
     ApplicationContext context;
 
@@ -24,15 +24,6 @@ public class CombinedLogger implements TypedEventLogger {
     }
 
 
-    @Override
-    public void log(String message) throws IOException {
-        log(null, message);
-    }
-
-    @Override
-    public void log(EventType eventType, String message) throws IOException {
-        logEvent(context.getBean(Event.class).setEventType(eventType).setMessage(message));
-    }
 
 
     @Override
