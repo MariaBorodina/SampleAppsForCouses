@@ -1,4 +1,4 @@
-insert into Vendor (Name) values ('Ozon');
+insert into Vendor (VendorName) values ('Ozon');
 
-insert into Brand (Name) values ('Apple');
+insert into Brand (BrandName) values ('Apple');
 
