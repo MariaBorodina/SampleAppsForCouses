@@ -11,7 +11,7 @@ public class Vendor {
     private int id;
 
     @Column(name = "VendorName")
-    private String name;
+    private String vname;
 
     public int getId() {
         return id;
@@ -21,11 +21,11 @@ public class Vendor {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getVname() {
+        return vname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVname(String vname) {
+        this.vname = vname;
     }
 }

@@ -6,9 +6,7 @@ import org.aspectj.weaver.Iterators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -30,11 +28,18 @@ public class LearningSpringApplication {
 		@GetMapping
 		public Iterable<Vendor> getVendors()
 		{
-			Iterable<Vendor> res =  vendorRepository.findAll();
+			Iterable<Vendor> res;
+			res = vendorRepository.findAll();
 
 			printVendors(res);
 
 			return  res;
+		}
+
+		@PostMapping
+		public void postVendors(@RequestBody Vendor vendor)
+		{
+			vendorRepository.save(vendor);
 		}
 
 		private void printVendors(Iterable<Vendor> vendors)
