@@ -1,8 +1,11 @@
 package com.mariaborodina.java.learningspring;
 
+import com.mariaborodina.java.learningspring.data.entity.Brand;
+import com.mariaborodina.java.learningspring.data.entity.Gadget;
 import com.mariaborodina.java.learningspring.data.entity.Vendor;
+import com.mariaborodina.java.learningspring.data.repository.BrandRepository;
+import com.mariaborodina.java.learningspring.data.repository.GadgetRepository;
 import com.mariaborodina.java.learningspring.data.repository.VendorRepository;
-import org.aspectj.weaver.Iterators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -45,6 +48,70 @@ public class LearningSpringApplication {
 		private void printVendors(Iterable<Vendor> vendors)
 		{
 			String msg = String.format("Vendors: has some values: %b", vendors.iterator().hasNext());
+			Logger.getLogger(this.getClass().getName()).info(msg);
+		}
+	}
+
+
+	@RestController
+	@RequestMapping("/brands")
+	public class BrandController
+	{
+		@Autowired
+		private BrandRepository brandRepository;
+
+		@GetMapping
+		public Iterable<Brand> getBrands()
+		{
+			Iterable<Brand> res;
+			res = brandRepository.findAll();
+
+			print(res);
+
+			return  res;
+		}
+
+		@PostMapping
+		public void post(@RequestBody Brand model)
+		{
+			brandRepository.save(model);
+		}
+
+		private void print(Iterable<Brand> list)
+		{
+			String msg = String.format("Brands: has some values: %b", list.iterator().hasNext());
+			Logger.getLogger(this.getClass().getName()).info(msg);
+		}
+	}
+
+
+	@RestController
+	@RequestMapping("/gadgets")
+	public class GadgetController
+	{
+		@Autowired
+		private GadgetRepository gadgetRepository;
+
+		@GetMapping
+		public Iterable<Gadget> getGadgets()
+		{
+			Iterable<Gadget> res;
+			res = gadgetRepository.findAll();
+
+			print(res);
+
+			return  res;
+		}
+
+		@PostMapping
+		public void post(@RequestBody Gadget model)
+		{
+			gadgetRepository.save(model);
+		}
+
+		private void print(Iterable<Gadget> list)
+		{
+			String msg = String.format("Gadgets: has some values: %b", list.iterator().hasNext());
 			Logger.getLogger(this.getClass().getName()).info(msg);
 		}
 	}
