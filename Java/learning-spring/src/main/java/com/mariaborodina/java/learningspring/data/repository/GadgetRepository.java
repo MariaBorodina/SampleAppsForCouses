@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GadgetRepository extends CrudRepository<Gadget, Integer> {
 
+    Iterable<Gadget> findGadgetByBrandId(int brandid);
 }

@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BrandRepository extends CrudRepository<Brand, Integer> {
 
+    Iterable<Brand> findBrandByvname(String vname);
 }

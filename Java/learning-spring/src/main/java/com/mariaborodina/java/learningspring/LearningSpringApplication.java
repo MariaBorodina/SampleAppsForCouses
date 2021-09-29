@@ -1,5 +1,7 @@
 package com.mariaborodina.java.learningspring;
 
+import com.mariaborodina.java.learningspring.business.domain.GadgetModel;
+import com.mariaborodina.java.learningspring.business.service.GadgetService;
 import com.mariaborodina.java.learningspring.data.entity.Brand;
 import com.mariaborodina.java.learningspring.data.entity.Gadget;
 import com.mariaborodina.java.learningspring.data.entity.Vendor;
@@ -91,6 +93,8 @@ public class LearningSpringApplication {
 	{
 		@Autowired
 		private GadgetRepository gadgetRepository;
+		@Autowired
+		private GadgetService gadgetService;
 
 		@GetMapping
 		public Iterable<Gadget> getGadgets()
@@ -99,6 +103,15 @@ public class LearningSpringApplication {
 			res = gadgetRepository.findAll();
 
 			print(res);
+
+			return  res;
+		}
+
+		@GetMapping("/{brandName}")
+		public Iterable<GadgetModel> getGadgetsByBrand(@PathVariable String brandName)
+		{
+			Iterable<GadgetModel> res;
+			res = gadgetService.getGadgetsByBrand(brandName);
 
 			return  res;
 		}
