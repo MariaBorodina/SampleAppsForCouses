@@ -18,7 +18,6 @@ public class GadgetModel {
     @Setter(AccessLevel.PUBLIC)
     private BrandModel brand;
 
-
     @Getter
     @Setter(AccessLevel.PUBLIC)
     private VendorModel vendor;

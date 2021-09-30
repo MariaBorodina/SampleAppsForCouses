@@ -27,7 +27,22 @@ public class GadgetService {
     }
 
     public List<GadgetModel> getGadgets(){
-        return null;
+        var gadgets= gadgetRepository.findAll();
+
+        var res = new ArrayList<GadgetModel>();
+        gadgets.iterator().forEachRemaining(gadget -> {
+            var vendor = vendorRepository.findById(gadget.getVendorId());
+            var brand = brandRepository.findById(gadget.getBrandId());
+
+            res.add(
+                    new GadgetModel(
+                            gadget.getId(),
+                            gadget.getVname(),
+                            new BrandModel(brand.get()),
+                            new VendorModel(vendor.get())));
+        });
+
+        return res;
     }
 
     public List<GadgetModel> getGadgetsByBrand(String brandName){
@@ -49,7 +64,7 @@ public class GadgetService {
                             gadget.getId(),
                             gadget.getVname(),
                             new BrandModel(brand),
-                            new VendorModel(vendor != null ? vendor.get() : null)));
+                            new VendorModel(vendor.get())));
         });
 
         return res;
