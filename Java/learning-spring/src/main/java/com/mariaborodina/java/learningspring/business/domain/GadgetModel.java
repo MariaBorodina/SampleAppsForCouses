@@ -1,25 +1,23 @@
 package com.mariaborodina.java.learningspring.business.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class GadgetModel {
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private int gadgetId;
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private String gadgetName;
 
     @Getter
-    @Setter(AccessLevel.PUBLIC)
+    @Setter
     private BrandModel brand;
 
     @Getter
-    @Setter(AccessLevel.PUBLIC)
+    @Setter
     private VendorModel vendor;
 
 }

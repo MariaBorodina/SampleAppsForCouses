@@ -1,14 +1,15 @@
 package com.mariaborodina.java.learningspring.controllers;
 
+import com.mariaborodina.java.learningspring.business.domain.BrandModel;
 import com.mariaborodina.java.learningspring.business.domain.GadgetModel;
+import com.mariaborodina.java.learningspring.business.domain.VendorModel;
+import com.mariaborodina.java.learningspring.business.service.GadgetCriteria;
 import com.mariaborodina.java.learningspring.business.service.GadgetService;
 import com.mariaborodina.java.learningspring.data.entity.Gadget;
 import com.mariaborodina.java.learningspring.data.repository.GadgetRepository;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/gadgets")
@@ -20,15 +21,15 @@ public class GadgetController
     @Autowired
     private GadgetService gadgetService;
 
-    @GetMapping
-    public Iterable<GadgetModel> getGadgets()
-    {
-        Iterable<GadgetModel> res;
-        res = gadgetService.getGadgets();
 
-        return  res;
+
+    @GetMapping
+    public Iterable<GadgetModel> getGadgets(GadgetCriteria criteria)
+    {
+        return gadgetService.getGadgetsByCriteria(criteria);
     }
 
+/*
     @GetMapping("/{brandName}")
     public Iterable<GadgetModel> getGadgetsByBrand(@PathVariable String brandName)
     {
@@ -37,6 +38,7 @@ public class GadgetController
 
         return  res;
     }
+*/
 
     @PostMapping
     public void post(@RequestBody Gadget model)

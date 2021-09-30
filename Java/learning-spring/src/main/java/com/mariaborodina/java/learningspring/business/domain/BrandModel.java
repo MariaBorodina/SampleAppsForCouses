@@ -9,10 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BrandModel {
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private int brandId;
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private String brandName;
 
     public BrandModel(Brand brand) {

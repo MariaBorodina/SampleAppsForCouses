@@ -9,10 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class VendorModel {
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private int vendorId;
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private String vendorName;
 
     public VendorModel(Vendor vendor) {

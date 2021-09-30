@@ -8,6 +8,9 @@ import com.mariaborodina.java.learningspring.data.repository.BrandRepository;
 import com.mariaborodina.java.learningspring.data.repository.GadgetRepository;
 import com.mariaborodina.java.learningspring.data.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,22 +31,26 @@ public class GadgetService {
 
     public List<GadgetModel> getGadgets(){
         var gadgets= gadgetRepository.findAll();
-
-        var res = new ArrayList<GadgetModel>();
-        gadgets.iterator().forEachRemaining(gadget -> {
-            var vendor = vendorRepository.findById(gadget.getVendorId());
-            var brand = brandRepository.findById(gadget.getBrandId());
-
-            res.add(
-                    new GadgetModel(
-                            gadget.getId(),
-                            gadget.getVname(),
-                            new BrandModel(brand.get()),
-                            new VendorModel(vendor.get())));
-        });
-
-        return res;
+        return convert(gadgets);
     }
+
+    public List<GadgetModel> getGadgetsByCriteria(GadgetCriteria criteria){
+        Gadget exampleGadget = new Gadget();
+        exampleGadget.setId(criteria.getGadgetId());
+        exampleGadget.setVname(criteria.getGadget());
+        exampleGadget.setBrandId(criteria.getBrandId());
+        exampleGadget.setVendorId(criteria.getVendorId());
+
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIncludeNullValues();
+
+        Example<Gadget> example = Example.of(exampleGadget, matcher);
+
+        var gadgets = gadgetRepository.findAll(example);
+
+        return convert(gadgets);
+    }
+
 
     public List<GadgetModel> getGadgetsByBrand(String brandName){
         var brands = brandRepository.findBrandByvname(brandName);
@@ -64,6 +71,24 @@ public class GadgetService {
                             gadget.getId(),
                             gadget.getVname(),
                             new BrandModel(brand),
+                            new VendorModel(vendor.get())));
+        });
+
+        return res;
+    }
+
+    private List<GadgetModel> convert(Iterable<Gadget> entities)
+    {
+        var res = new ArrayList<GadgetModel>();
+        entities.iterator().forEachRemaining(gadget -> {
+            var vendor = vendorRepository.findById(gadget.getVendorId());
+            var brand = brandRepository.findById(gadget.getBrandId());
+
+            res.add(
+                    new GadgetModel(
+                            gadget.getId(),
+                            gadget.getVname(),
+                            new BrandModel(brand.get()),
                             new VendorModel(vendor.get())));
         });
 

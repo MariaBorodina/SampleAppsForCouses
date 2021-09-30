@@ -13,12 +13,12 @@ public class Vendor {
     @Column(name = "Vendor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private int id;
 
     @Column(name = "VendorName")
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private String vname;
 
 }

@@ -13,12 +13,12 @@ public class Brand {
     @Column(name = "Brand_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private int id;
 
     @Column(name = "BrandName")
     @Getter
-    @Setter(AccessLevel.PACKAGE)
+    @Setter
     private String vname;
 
 }
