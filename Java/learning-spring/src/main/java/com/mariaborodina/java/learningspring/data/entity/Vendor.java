@@ -1,5 +1,6 @@
 package com.mariaborodina.java.learningspring.data.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,12 +13,12 @@ public class Vendor {
     @Column(name = "Vendor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
-    @Setter
+    @Setter(AccessLevel.PACKAGE)
     private int id;
 
     @Column(name = "VendorName")
     @Getter
-    @Setter
+    @Setter(AccessLevel.PACKAGE)
     private String vname;
 
 }

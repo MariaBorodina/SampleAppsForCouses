@@ -1,6 +1,8 @@
 package com.mariaborodina.java.learningspring.business.service;
 
+import com.mariaborodina.java.learningspring.business.domain.BrandModel;
 import com.mariaborodina.java.learningspring.business.domain.GadgetModel;
+import com.mariaborodina.java.learningspring.business.domain.VendorModel;
 import com.mariaborodina.java.learningspring.data.entity.Gadget;
 import com.mariaborodina.java.learningspring.data.repository.BrandRepository;
 import com.mariaborodina.java.learningspring.data.repository.GadgetRepository;
@@ -33,24 +35,21 @@ public class GadgetService {
         if(brands == null || !brands.iterator().hasNext())
             return null;
 
-        var brandId = brands.iterator().next().getId();
-        var gadgets= gadgetRepository.findGadgetByBrandId(brandId);
+        var brand = brands.iterator().next();
+        var gadgets= gadgetRepository.findGadgetByBrandId(brand.getId());
         if(gadgets == null)
             return null;
 
         var res = new ArrayList<GadgetModel>();
         gadgets.iterator().forEachRemaining(gadget -> {
                 var vendor = vendorRepository.findById(gadget.getVendorId());
-                var vendorName = vendor != null ? vendor.get().getVname() : "";
 
                 res.add(
                     new GadgetModel(
                             gadget.getId(),
                             gadget.getVname(),
-                            brandId,
-                            brandName,
-                            vendor.get().getId(),
-                            vendorName));
+                            new BrandModel(brand),
+                            new VendorModel(vendor != null ? vendor.get() : null)));
         });
 
         return res;

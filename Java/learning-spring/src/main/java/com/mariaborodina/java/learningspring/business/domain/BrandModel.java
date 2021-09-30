@@ -1,26 +1,22 @@
 package com.mariaborodina.java.learningspring.business.domain;
 
+import com.mariaborodina.java.learningspring.data.entity.Brand;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor
-public class GadgetModel {
+public class BrandModel {
     @Getter
     @Setter(AccessLevel.PACKAGE)
-    private int gadgetId;
+    private int brandId;
     @Getter
     @Setter(AccessLevel.PACKAGE)
-    private String gadgetName;
+    private String brandName;
 
-    @Getter
-    @Setter(AccessLevel.PUBLIC)
-    private BrandModel brand;
-
-
-    @Getter
-    @Setter(AccessLevel.PUBLIC)
-    private VendorModel vendor;
-
+    public BrandModel(Brand brand) {
+        this.brandId = brand.getId();
+        this.brandName = brand.getVname();
+    }
 }
