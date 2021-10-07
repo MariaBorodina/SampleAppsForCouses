@@ -1,40 +1,40 @@
 package com.mariaborodina.java.learningspring.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="Gadget")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Gadget {
     @Id
     @Column(name = "Gadget_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
-    private int id;
+    private Integer id;
 
     @Column(name = "GadgetName")
-    @Getter
-    @Setter
     private String vname;
 
+
+/*
+    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name="vendor_id")
+    private Vendor vendor;
+    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+        @JoinColumn(name="brand_id")
+        private Brand brand;*/
+
     @Column(name="Vendor_id")
-    @JsonProperty("vendor_id")
-    @Getter
-    @Setter
-    private int vendorId;
+    private Integer vendorId;
 
     @Column(name="Brand_id")
-    @JsonProperty("brand_id")
-    @Getter
-    @Setter
-    private int brandId;
+    private Integer brandId;
 
-    public Gadget() {
-    }
+
 
 }

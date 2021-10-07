@@ -10,7 +10,7 @@ import lombok.Setter;
 public class BrandModel {
     @Getter
     @Setter
-    private int brandId;
+    private Integer brandId;
     @Getter
     @Setter
     private String brandName;

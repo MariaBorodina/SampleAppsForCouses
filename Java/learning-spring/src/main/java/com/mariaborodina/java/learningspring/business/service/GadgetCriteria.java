@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class GadgetCriteria
 {
-    private int brandId;
+    private Integer brandId;
     private String brand;
-    private int vendorId;
+    private Integer vendorId;
     private String vendor;
-    private int gadgetId;
+    private Integer gadgetId;
     private String gadget;
 }

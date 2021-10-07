@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface GadgetRepository extends JpaRepository<Gadget, Integer> {
 
-    Iterable<Gadget> findGadgetByBrandId(int brandid);
+    Iterable<Gadget> findGadgetByBrandId(Integer brandid);
 }

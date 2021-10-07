@@ -7,7 +7,7 @@ import lombok.*;
 public class GadgetModel {
     @Getter
     @Setter
-    private int gadgetId;
+    private Integer gadgetId;
     @Getter
     @Setter
     private String gadgetName;

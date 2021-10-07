@@ -2,6 +2,7 @@ package com.mariaborodina.java.learningspring.business.service;
 
 import com.mariaborodina.java.learningspring.business.domain.BrandModel;
 import com.mariaborodina.java.learningspring.business.domain.GadgetModel;
+import com.mariaborodina.java.learningspring.business.domain.InputGadgetModel;
 import com.mariaborodina.java.learningspring.business.domain.VendorModel;
 import com.mariaborodina.java.learningspring.data.entity.Gadget;
 import com.mariaborodina.java.learningspring.data.repository.BrandRepository;
@@ -41,8 +42,7 @@ public class GadgetService {
         exampleGadget.setBrandId(criteria.getBrandId());
         exampleGadget.setVendorId(criteria.getVendorId());
 
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withIncludeNullValues();
+        ExampleMatcher matcher = ExampleMatcher.matching();
 
         Example<Gadget> example = Example.of(exampleGadget, matcher);
 
@@ -95,4 +95,8 @@ public class GadgetService {
         return res;
     }
 
+    public void save(InputGadgetModel gadget) {
+        gadgetRepository.save(
+         new Gadget(gadget.getId(), gadget.getVname(), gadget.getVendorId(), gadget.getBrandId()));
+    }
 }

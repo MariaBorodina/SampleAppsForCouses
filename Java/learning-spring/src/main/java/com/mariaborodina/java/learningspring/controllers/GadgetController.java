@@ -2,6 +2,7 @@ package com.mariaborodina.java.learningspring.controllers;
 
 import com.mariaborodina.java.learningspring.business.domain.BrandModel;
 import com.mariaborodina.java.learningspring.business.domain.GadgetModel;
+import com.mariaborodina.java.learningspring.business.domain.InputGadgetModel;
 import com.mariaborodina.java.learningspring.business.domain.VendorModel;
 import com.mariaborodina.java.learningspring.business.service.GadgetCriteria;
 import com.mariaborodina.java.learningspring.business.service.GadgetService;
@@ -21,29 +22,17 @@ public class GadgetController
     @Autowired
     private GadgetService gadgetService;
 
-
-
     @GetMapping
     public Iterable<GadgetModel> getGadgets(GadgetCriteria criteria)
     {
         return gadgetService.getGadgetsByCriteria(criteria);
     }
 
-/*
-    @GetMapping("/{brandName}")
-    public Iterable<GadgetModel> getGadgetsByBrand(@PathVariable String brandName)
-    {
-        Iterable<GadgetModel> res;
-        res = gadgetService.getGadgetsByBrand(brandName);
-
-        return  res;
-    }
-*/
-
     @PostMapping
-    public void post(@RequestBody Gadget model)
+    public void post(@RequestBody InputGadgetModel gadget)
     {
-        gadgetRepository.save(model);
+        gadgetService.save(gadget);
+        //gadgetRepository.save(gadget);
     }
 
     private void print(Iterable<GadgetModel> list)
