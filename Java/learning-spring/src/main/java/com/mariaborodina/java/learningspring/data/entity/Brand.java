@@ -5,20 +5,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name="Brand")
+@Getter
+@Setter
 public class Brand {
     @Id
     @Column(name = "Brand_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private int id;
 
     @Column(name = "BrandName")
-    @Getter
-    @Setter
     private String vname;
+
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
+    private Collection<Gadget> goods;
 
 }

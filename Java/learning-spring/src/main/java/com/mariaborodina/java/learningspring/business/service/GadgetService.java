@@ -8,6 +8,7 @@ import com.mariaborodina.java.learningspring.data.entity.Gadget;
 import com.mariaborodina.java.learningspring.data.repository.BrandRepository;
 import com.mariaborodina.java.learningspring.data.repository.GadgetRepository;
 import com.mariaborodina.java.learningspring.data.repository.VendorRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -95,8 +96,10 @@ public class GadgetService {
         return res;
     }
 
-    public void save(InputGadgetModel gadget) {
-        gadgetRepository.save(
-         new Gadget(gadget.getId(), gadget.getVname(), gadget.getVendorId(), gadget.getBrandId()));
+    public void save(InputGadgetModel inputGadgetModel) {
+        ModelMapper mapper = new ModelMapper();
+        var gadget = mapper.map(inputGadgetModel, Gadget.class);
+
+        gadgetRepository.save(gadget);
     }
 }

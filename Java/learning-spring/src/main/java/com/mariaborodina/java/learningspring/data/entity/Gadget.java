@@ -2,6 +2,7 @@ package com.mariaborodina.java.learningspring.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 
@@ -10,7 +11,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Gadget {
     @Id
     @Column(name = "Gadget_id")
@@ -21,20 +21,18 @@ public class Gadget {
     private String vname;
 
 
-/*
     @ManyToOne(optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name="vendor_id")
     private Vendor vendor;
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
-        @JoinColumn(name="brand_id")
-        private Brand brand;*/
 
-    @Column(name="Vendor_id")
+    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name="brand_id")
+    private Brand brand;
+
+    @Column(name="Vendor_id", insertable=false, updatable=false)
     private Integer vendorId;
 
-    @Column(name="Brand_id")
+    @Column(name="Brand_id", insertable=false, updatable=false)
     private Integer brandId;
-
-
 
 }

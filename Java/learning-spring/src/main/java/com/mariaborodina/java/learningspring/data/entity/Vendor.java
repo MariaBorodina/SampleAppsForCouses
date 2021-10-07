@@ -20,8 +20,8 @@ public class Vendor {
     @Column(name = "VendorName")
     private String vname;
 
-/*    @OneToMany(mappedBy = "vendor_id", fetch = FetchType.EAGER)
-    private Collection<Gadget> goods;*/
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
+    private Collection<Gadget> goods;
 
 
 }
