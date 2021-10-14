@@ -28,11 +28,16 @@ public class GadgetController
         return gadgetService.getGadgetsByCriteria(criteria);
     }
 
+    @GetMapping("/brand/{name}")
+    public Iterable<GadgetModel> getGadgetsByBrandName(@PathVariable String name)
+    {
+        return gadgetService.getGadgetsByBrand(name);
+    }
+
     @PostMapping
     public void post(@RequestBody InputGadgetModel gadget)
     {
         gadgetService.save(gadget);
-        //gadgetRepository.save(gadget);
     }
 
     private void print(Iterable<GadgetModel> list)

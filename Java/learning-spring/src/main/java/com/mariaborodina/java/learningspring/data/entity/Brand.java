@@ -20,7 +20,7 @@ public class Brand {
     @Column(name = "BrandName")
     private String vname;
 
-    @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "brand", fetch = FetchType.EAGER)
     private Collection<Gadget> goods;
 
 }

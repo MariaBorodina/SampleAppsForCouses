@@ -21,18 +21,18 @@ public class Gadget {
     private String vname;
 
 
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
-    @JoinColumn(name="vendor_id")
+    @ManyToOne(optional=true, cascade=CascadeType.ALL)
+    @JoinColumn(name="vendor_id",insertable=false, updatable=false)
     private Vendor vendor;
 
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
-    @JoinColumn(name="brand_id")
+    @ManyToOne(optional=true, cascade=CascadeType.ALL)
+    @JoinColumn(name="brand_id",insertable=false, updatable=false)
     private Brand brand;
 
-    @Column(name="Vendor_id", insertable=false, updatable=false)
+    @Column(name="Vendor_id", insertable=true)
     private Integer vendorId;
 
-    @Column(name="Brand_id", insertable=false, updatable=false)
+    @Column(name="Brand_id", insertable=true)
     private Integer brandId;
 
 }

@@ -54,7 +54,8 @@ public class GadgetService {
 
 
     public List<GadgetModel> getGadgetsByBrand(String brandName){
-        var brands = brandRepository.findBrandByvname(brandName);
+        var brands = brandRepository.findBrandByVname(brandName);
+                //brandRepository.findWhatINeedByName(brandName);
         if(brands == null || !brands.iterator().hasNext())
             return null;
 
@@ -65,14 +66,14 @@ public class GadgetService {
 
         var res = new ArrayList<GadgetModel>();
         gadgets.iterator().forEachRemaining(gadget -> {
-                var vendor = vendorRepository.findById(gadget.getVendorId());
+                //var vendor = vendorRepository.findById(gadget.getVendorId());
 
                 res.add(
                     new GadgetModel(
                             gadget.getId(),
                             gadget.getVname(),
                             new BrandModel(brand),
-                            new VendorModel(vendor.get())));
+                            new VendorModel(gadget.getVendor())));
         });
 
         return res;
@@ -82,23 +83,27 @@ public class GadgetService {
     {
         var res = new ArrayList<GadgetModel>();
         entities.iterator().forEachRemaining(gadget -> {
-            var vendor = vendorRepository.findById(gadget.getVendorId());
-            var brand = brandRepository.findById(gadget.getBrandId());
+//            var vendor = vendorRepository.findById(gadget.getVendorId());
+//            var brand = brandRepository.findById(gadget.getBrandId());
 
             res.add(
                     new GadgetModel(
                             gadget.getId(),
                             gadget.getVname(),
-                            new BrandModel(brand.get()),
-                            new VendorModel(vendor.get())));
+                            new BrandModel(gadget.getBrand()),
+                            new VendorModel(gadget.getVendor())));
         });
 
         return res;
     }
 
     public void save(InputGadgetModel inputGadgetModel) {
-        ModelMapper mapper = new ModelMapper();
-        var gadget = mapper.map(inputGadgetModel, Gadget.class);
+      //  ModelMapper mapper = new ModelMapper();
+     //   var gadget = mapper.map(inputGadgetModel, Gadget.class);
+        var gadget = new Gadget();
+        gadget.setVname(inputGadgetModel.getVname());
+        gadget.setBrandId(inputGadgetModel.getBrandId());
+        gadget.setVendorId(inputGadgetModel.getVendorId());
 
         gadgetRepository.save(gadget);
     }

@@ -7,12 +7,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor
+@Getter
+@Setter
 public class BrandModel {
-    @Getter
-    @Setter
+
     private Integer brandId;
-    @Getter
-    @Setter
     private String brandName;
 
     public BrandModel(Brand brand) {
