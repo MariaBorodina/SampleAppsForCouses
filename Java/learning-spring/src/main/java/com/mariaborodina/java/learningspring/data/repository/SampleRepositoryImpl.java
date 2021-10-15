@@ -13,7 +13,7 @@ public class SampleRepositoryImpl implements SampleRepository {
     @Override
     public Iterable<Brand> getBrandsCustom(String vname) {
         return this.entityManager.
-        createQuery("SELECT * FROM Brand u WHERE u.brand_name like '"+vname+"'").
+        createQuery("SELECT * FROM Brand u WHERE u.brandname like '"+vname+"'").
         getResultList();
 
     }

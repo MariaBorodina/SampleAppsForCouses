@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Gadget {
     @Id
     @Column(name = "Gadget_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "GadgetName")
