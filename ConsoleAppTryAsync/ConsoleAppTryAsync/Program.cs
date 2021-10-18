@@ -13,35 +13,48 @@ namespace ConsoleAppTryAsync
         {
             Console.WriteLine(" Fun With Async ===>");
 
-            //CallAsyncAwait();
-            CallTaskWhen();
+            //await CallAsyncAwait();
+            //CallTaskWhen();
             //CallTaskWait();
             //CallTaskContinueWith();
-            //CallTaskDoSomeWork();
+            CallTaskDoSomeWork();
 
+
+            //var c = new TestSomeAsync();
+            //c.CallTaskWhen();
             Console.WriteLine("After the call");
 
-            Console.ReadLine();
+            Console.ReadKey();
 
         }
 
-
+        static int i = 1;
+        static string str = "a";
         static void CallTaskWhen()
         {
-            Console.WriteLine("Going to create task");
+            i = 2;
+            str = "b";
+
+            Console.WriteLine(DateTime.Now.ToLongTimeString() + " Going to create task");
+
             Task<string> task = CallTaskReturnTask();
-            Thread.Sleep(200);
 
-            Console.WriteLine("Going to WhenAny... ");
+            Console.WriteLine("i = " + i + ", str = " + str);
+            Thread.Sleep(200);
+            Console.WriteLine("i = " + i + ", str = " + str);
+
+            Console.WriteLine(DateTime.Now.ToLongTimeString() + " Going to WhenAny... ");
             var after = Task.WhenAny(task);
+            Console.WriteLine("i = " + i + ", str = " + str);
             Thread.Sleep(200);
 
-            Console.WriteLine("Going to wait... ");
+            Console.WriteLine(DateTime.Now.ToLongTimeString() + " Going to wait... ");
             after.Wait();
-            Console.WriteLine("Right after the wait ");
+            Console.WriteLine(DateTime.Now.ToLongTimeString() + " Right after the wait ");
             Thread.Sleep(200);
 
-            Console.WriteLine("after.Result = " + after.Result.Result);
+            Console.WriteLine(DateTime.Now.ToLongTimeString() + " after.Result = " + after.Result.Result);
+            Console.WriteLine(DateTime.Now.ToLongTimeString() + " i = " + i + ", str = " + str);
         }
 
         static void CallTaskDoSomeWork()
@@ -64,6 +77,8 @@ namespace ConsoleAppTryAsync
             Task<string> task = Task.Run(() =>
             {
                 Console.WriteLine("task started");
+                i = 5;
+                str = "changed";
                 Thread.Sleep(2_000);
                 Console.WriteLine("Done some work in task ");
                 return "The message from CallTask!";

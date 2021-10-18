@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleAppHashes
 {
@@ -20,6 +21,23 @@ namespace ConsoleAppHashes
             y = Y;
             width = Width;
             height = Height;
+        }
+
+        public Rect(Point[] points)
+        {
+            x = points.Min(p => p.x);
+            width = points.Max(p => p.x) - x;
+            y = points.Min(p => p.y);
+            height = points.Max(p => p.y) - y;
+        }
+
+        public string PrintMe()
+        {
+            return $@"
+x = {x}
+y = {y}
+width = {width}
+heigth = {height}";
         }
 
         public bool TestPointWithinRectangle(Point p)

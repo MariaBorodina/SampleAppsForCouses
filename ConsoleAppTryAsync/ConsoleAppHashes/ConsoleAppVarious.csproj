@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="LinkedLists\ListBase.cs" />
     <Compile Include="LinkedLists\Node.cs" />
+    <Compile Include="LinkedLists\OneLinkList.cs" />
+    <Compile Include="Trees\BTree.cs" />
+    <Compile Include="Various\Class1.cs" />
     <Compile Include="Various\PictureModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="Various\TestAnything.cs" />
     <Compile Include="Sortings\SortingBase.cs" />
     <Compile Include="Various\TestFromSite.cs" />
+    <Compile Include="Various\TestRandoms.cs" />
     <Compile Include="Various\TestRectangles.cs" />
   </ItemGroup>
   <ItemGroup>
