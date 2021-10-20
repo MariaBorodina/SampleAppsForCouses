@@ -75,14 +75,35 @@ const theme = createTheme({
             // Name of the slot
             root: {
               // Some CSS
-              fontSize: '1em',
+              fontSize: '0.8em',
               textTransform: 'none',
-              padding: '0 0.5em',
+              padding: '0 0.8em',
               margin: '0 0.5em',
               border: '#cc00ee solid 1px',
+              color: 'black',
+              alignSelf: 'center',
+              width: 'fit-content',
             },
           },
         },
+
+        MuiTypography: {
+          styleOverrides: {
+            root:{
+              fontSize: '0.8em',
+
+              '&.fieldName': {
+                fontWeight: '600',
+                paddingRight: '0.5em',
+              },
+            },
+
+            h2: {
+              fontSize: '1.2em',
+              fontWeight: '600',
+            },
+          }
+        }
       },
 
 
