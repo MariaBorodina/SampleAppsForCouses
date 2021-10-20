@@ -1,6 +1,6 @@
 import './App.css';
 import {ThemeProvider} from '@mui/material/styles';
-//import Header from './components/Header/Header';
+import Header from './components/Header/Header';
 import Courses from './components/Courses/Courses';
 import CourseCard from './components/CourseCard/CourseCard';
 import theme from './theme';
@@ -11,8 +11,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div className="App">
-      {/* <Header individuumName='Dave'>        
-      </Header> */}
+      <Header individuumName='Dave'>        
+      </Header>
 
       <Courses>
         <CourseCard 
