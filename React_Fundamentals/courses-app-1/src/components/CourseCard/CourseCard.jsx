@@ -2,7 +2,7 @@ import { Grid, ListItem,  Typography } from "@mui/material";
 import MyButton from "../Button/Button";
 import Field from '../Field/Field';
 
-const CourseCard = (item) => {
+const CourseCard = ({item}) => {
     return (
     <ListItem>
         <Grid container direction='row'>
@@ -14,7 +14,7 @@ const CourseCard = (item) => {
 
           <Grid item xs={4} md={3} >
             <Grid container direction='column'>
-              <Field name="Authors" value={item.authors}> </Field>
+              <Field name="Authors" value={item.authorList}> </Field>
               <Field name="Duration" value={item.duration} > </Field>
               <Field name="Created" value={item.created} > </Field>
 
