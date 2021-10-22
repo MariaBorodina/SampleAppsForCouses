@@ -6,7 +6,7 @@ const Courses = function(props) {
     return (
         <List>
             {props.items.map(course => 
-                <CourseCard item={course}></CourseCard>)}
+                <CourseCard item={course} key={course.id}></CourseCard>)}
         </List>
     );
 }
